@@ -34,7 +34,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let heroe of heroes">
+            <tr *ngFor="let heroe of heroes | heroFilter:listFilter">
               <td>
                 <img *ngIf="muestraImage"
                 [src]="heroe.imagen" 
@@ -42,7 +42,7 @@
                 [style.margi.px]="imageMargin"
                 >
             </td>
-              <td>{{ heroe.nombre }}</td>
+              <td>{{ heroe.nombre | uppercase}}</td>
               <td>{{ heroe.description }}</td>
               <td>{{ heroe.race }}</td>
               <td>{{ heroe.ki }}</td>
@@ -50,7 +50,6 @@
           </tbody>
         </table>
       </div>
-
     </div>
   </div>
 </div>
