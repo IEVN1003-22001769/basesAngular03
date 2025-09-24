@@ -1,0 +1,66 @@
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header">
+      <h1>Cinépolis </h1>
+    </div>
+
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <label class="form-label fw-bold">Nombre</label>
+          <input [(ngModel)]="nombre" type="text" class="form-control" placeholder="Tu nombre" name="nombre">
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label fw-bold">Cantidad Compradores</label>
+          <input [(ngModel)]="cantidadC" type="number" min="1" class="form-control" name="compradores">
+        </div>
+        
+        <div class="col-md-3">
+          <label class="form-label fw-bold d-block">Tarjeta CINECO</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" [(ngModel)]="tarjetaCineco" [value]="true" name="cineco" id="cinecoSi">
+            <label class="form-check-label" for="cinecoSi">Sí</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" [(ngModel)]="tarjetaCineco" [value]="false" name="cineco" id="cinecoNo">
+            <label class="form-check-label" for="cinecoNo">No</label>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label fw-bold">Cantidad de Boletas</label>
+          <input 
+            [(ngModel)]="cantidadBoletas" 
+            type="number" 
+            min="1" 
+            [max]="cantidadC * 7" 
+            class="form-control" 
+            name="boletas">
+            <small class="text-muted">
+            Máximo {{ cantidadC * 7 }} boletas en total (7 por persona).
+            </small>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <button class="btn btn-primary me-2" (click)="procesar()">Procesar</button>
+          <button class="btn btn-secondary" (click)="salir()">Salir</button>
+        </div>
+      </div>
+
+     <div *ngIf="mensaje" class="alert alert-info">
+        {{ mensaje }}
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Valor a Pagar:</h5>
+          <p class="fs-5">${{  pago }}</p>
+        </div>
+    
+      </div>
+    </div>
+  </div>
+</div>
