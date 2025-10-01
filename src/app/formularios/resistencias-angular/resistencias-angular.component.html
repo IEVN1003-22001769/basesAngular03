@@ -1,1 +1,88 @@
-<p>resistencias-angular works!</p>
+<div style="max-width:800px;margin:2rem auto;font-family:sans-serif">
+  <h2>Calculadora de Resistencia</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1rem 0">
+    <fieldset>
+      <legend>1ra. Banda</legend>
+      <label *ngFor="let c of numeros"
+             style="display:flex;align-items:center;cursor:pointer;margin-bottom:.25rem">
+        <input type="radio" name="b1" [(ngModel)]="uno" [value]="c"  style="margin-right:.5rem" />
+
+          <span [style.background]="c.colorsillo" style="display:inline-block;width:20px;height:20px;border:1px solid #333;margin-right:.5rem"></span>
+          <span>{{ c.nombre }}</span>
+
+      </label>
+    </fieldset>
+
+
+    <fieldset>
+      <legend>2da. Banda </legend>
+      <label *ngFor="let c of numeros"
+             style="display:flex;align-items:center;cursor:pointer;margin-bottom:.25rem">
+        <input type="radio" name="b2" [(ngModel)]="dos" [value]="c"  style="margin-right:.5rem" />
+
+          <span [style.background]="c.colorsillo" style="display:inline-block;width:20px;height:20px;border:1px solid #333;margin-right:.5rem"></span>
+          <span>{{ c.nombre }}</span>
+
+      </label>
+    </fieldset>
+
+
+    <fieldset>
+      <legend>Multiplicador</legend>
+      <label *ngFor="let c of multiplicadores"
+             style="display:flex;align-items:center;cursor:pointer;margin-bottom:.25rem">
+        <input type="radio" name="b3" [(ngModel)]="mult" [value]="c"   style="margin-right:.5rem" />
+
+          <span [style.background]="c.colorsillo" style="display:inline-block;width:20px;height:20px;border:1px solid #333;margin-right:.5rem"></span>
+          <span>{{ c.nombre }}</span>
+
+      </label>
+    </fieldset>
+  </div>
+
+  <fieldset style="margin-bottom:1rem">
+    <legend>Tolerancia</legend>
+    <label *ngFor="let c of tolerancias"
+           style="display:flex;align-items:center;cursor:pointer;margin-right:1rem">
+      <input type="radio" name="tol" [(ngModel)]="tol" [value]="c"  style="margin-right:.5rem" />
+
+      <span [style.background]="c.colorsillo" style="display:inline-block;width:20px;height:20px;border:1px solid #333;margin-right:.5rem"></span>
+      <span>{{ c.nombre }}</span>
+        
+    </label>
+  </fieldset>
+
+ 
+  <button (click)="calcular()" style="padding:.5rem 1rem;font-size:1rem">
+    Calcular
+  </button>
+
+
+  <table border="1" cellspacing="0" cellpadding="6"
+         style="width:100%;margin-top:1rem;text-align:center">
+    <thead>
+      <tr>
+        <th>Color1</th>
+        <th>Color2</th>
+        <th>Multiplicador</th>
+        <th>Tolerancia</th>
+        <th>Valor</th>
+        <th>Valor Máx</th>
+        <th>Valor Mín</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <td [style.background]="uno.colorsillo" style="padding:8px;">{{ uno.nombre }}</td>
+        <td [style.background]="dos.colorsillo" style="padding:8px;">{{ dos.nombre }}</td>
+        <td [style.background]="mult.colorsillo" style="padding:8px;">{{ mult.nombre }}</td>
+        <td [style.background]="tol.colorsillo" style="padding:8px;">{{ tol.nombre }}</td>
+        <td>{{ valorOhms }} Ω</td>
+        <td>{{ valorMax }} Ω</td>
+        <td>{{ valorMin }} Ω</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
